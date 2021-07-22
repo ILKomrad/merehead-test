@@ -1,10 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App"></div>
-  );
+import UsersPage from './pages/UsersPage';
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <div className="app">
+                <Switch>
+                    <Route exact path="/">
+                        <UsersPage />
+                    </Route>
+                    <Redirect to="/" />
+                </Switch>
+            </div>
+        </BrowserRouter>
+    )
 }
-
-export default App;
