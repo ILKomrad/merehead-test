@@ -6,6 +6,11 @@ const initialState = usersAdapter.getInitialState({
     state: "idle"
 });
 
+export const {
+    selectIds: selectUsersIds,
+    selectById: selectUserById,
+} = usersAdapter.getSelectors(state => state.users);
+
 const usersSlice = createSlice({
     name: "users",
     initialState,
@@ -13,6 +18,9 @@ const usersSlice = createSlice({
     extraReducers: {
         "users/fetchUsers/fulfilled": (state, action) => {
             console.log( action )
+            state.state = 'succeeded';
+            state.error = null;
+            usersAdapter.upsertMany(state, action.payload);
         },
         "users/fetchUsers/rejected": (state, action) => {
             state.state = "error";

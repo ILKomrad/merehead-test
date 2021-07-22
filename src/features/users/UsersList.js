@@ -1,9 +1,16 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./UsersList.css";
+
+import { selectUsersIds } from "./usersSlice";
+import User from './User';
 
 export default function UsersList() {
     const dispatch = useDispatch();
     const error = useSelector(state => state.users.error);
+    const usersIds = useSelector(selectUsersIds);
     let inner;
 
     useEffect(() => {
@@ -13,13 +20,15 @@ export default function UsersList() {
     if (error) {
         inner = <div>{error}</div>;
     } else {
-        inner = <div>users list</div>
+        inner = usersIds.map(id => <User key={id} id={id} />);
     }
 
     return (
         <section>
             <h3>users</h3>
-            {inner}
+            <Row className="users-list">
+                {inner}
+            </Row>
         </section>
     )
 }

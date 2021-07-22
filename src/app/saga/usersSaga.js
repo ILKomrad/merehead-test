@@ -10,7 +10,7 @@ function* fetchAllUsers() {
     const state = yield select();
  
     try {
-        const posts = yield call(ConnectionApi.get, state.settings.serverUrl + "getTasks");
+        const posts = yield call(ConnectionApi.get, `${state.settings.serverUrl}api/users`);
         yield put({ type: "users/fetchUsers/fulfilled", payload: posts });
     } catch (err) {
         yield put({ type: 'users/fetchUsers/rejected', payload: err })
