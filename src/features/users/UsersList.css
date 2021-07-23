@@ -1,5 +1,8 @@
 .users-list__item {
-    padding: 1rem;
-    background: cornflowerblue;
     margin: .5rem;
+}
+
+.usersList__title {
+    text-transform: uppercase;
+    font-size: 2rem;
 }

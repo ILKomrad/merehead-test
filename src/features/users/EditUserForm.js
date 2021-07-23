@@ -14,10 +14,15 @@ export default function EditUserForm(user) {
     if (!user.id) {
         return <div></div>
     }
+
+    const layout = {
+        labelCol: { span: 24 }
+    };
     
     return (
         <Fragment>
-            <Form initialValues={user} form={form} name="userForm" onFinish={onFinish}>
+            <Form {...layout} initialValues={user} form={form} name="userForm" onFinish={onFinish}>
+                <h3 className="form-title">Edit user</h3>
                 <Form.Item 
                     name="name" 
                     rules={[

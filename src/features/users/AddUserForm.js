@@ -8,39 +8,41 @@ export default function AddUserForm() {
     const onFinish = values => {
         dispatch({type: "ADD_USER", payload: values});
     }
+
+    const layout = {
+        labelCol: { span: 24 }
+    };
     
     return (
-        <Form form={form} name="userForm" onFinish={onFinish}>
+        <Form form={form} {...layout} name="userForm" onFinish={onFinish}>
+            <h3 className="form-title">Add user</h3>
             <Form.Item 
                 name="name" 
+                label="name"
                 rules={[
-                {
-                    required: true,
-                    message: 'Please input your name',
-                },
-            ]}>
+                    {
+                        required: true,
+                        message: 'Please input your name',
+                    },
+                ]}>
                 <Input placeholder="Input your name" />
             </Form.Item>
 
             <Form.Item 
                 name="surname" 
+                label="surname"
                 rules={[
-                {
-                    required: true,
-                    message: 'Please input your name',
-                },
-            ]}>
+                    {
+                        required: true,
+                        message: 'Please input your surname',
+                    }]
+                }>
                 <Input placeholder="Input your surname" />
             </Form.Item>
 
             <Form.Item
                 name="desc" 
-                rules={[
-                {
-                    required: true,
-                    message: 'Please input your name',
-                },
-            ]}>
+                label="description">
                 <Input.TextArea placeholder="Input your desc" />
             </Form.Item>
 

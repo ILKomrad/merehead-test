@@ -1,0 +1,22 @@
+.users-list__item {
+    padding: 1rem;
+    box-shadow: 0 0px .2rem rgba(0, 0, 0, .5);
+    transition: box-shadow .5s;
+}
+
+.users-list__item:hover {
+    box-shadow: 0 0px .8rem rgba(0, 0, 0, .5);
+}
+
+footer > button {
+    margin: .2rem;
+}
+
+button > span {
+    text-transform: uppercase;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+}

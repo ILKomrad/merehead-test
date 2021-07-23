@@ -1,12 +1,12 @@
 import { useMemo } from "react"
 import { useSelector } from "react-redux";
-import { Row, Col } from 'antd';
+import { Row } from 'antd';
 
+import User from './User';
+import Paginator from '../../common/components/Paginator';
 import { selectUsersIds } from "./usersSlice";
 import { usePageNumber } from '../../common/hooks';
-import Paginator from '../../common/components/Paginator';
 import { getMaxPage } from '../settings/settingsSlice';
-import User from './User';
 import "./UsersList.css";
 
 export default function UsersList() {
@@ -28,18 +28,14 @@ export default function UsersList() {
         inner = <div>{error}</div>;
     } else {
         inner = selectedIds.map(id => (
-            <Row key={id} justify="center" gutter={16}>
-                <Col xs={24} md={6} sm={8}>
-                    <User key={id} id={id} />
-                </Col>
-            </Row>
+            <User key={id} id={id} />
         ));
     }
 
     return (
-        <section>
+        <section className="usersList">
             <Row justify="center">
-                <h3>users</h3>
+                <h3 className="usersList__title">users</h3>
             </Row>
             <div className="users-list"></div>
             <div className="usersList">
