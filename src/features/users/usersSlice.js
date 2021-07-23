@@ -40,7 +40,11 @@ const usersSlice = createSlice({
                     user[i] = action.payload[i];
                 }
             }
-        }
+        },
+        "users/deleteUser/fulfilled": (state, action) => {
+            usersAdapter.setAll(state, action.payload);
+        },
+        "users/deleteUser/rejected": (state, action) => {}
     }
 });
 

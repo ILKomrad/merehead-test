@@ -6,6 +6,7 @@ export default function* watchUsers() {
     yield takeEvery("FETCH_ALL_USERS", fetchAllUsers);
     yield takeEvery("ADD_USER", addUser);
     yield takeEvery("EDIT_USER", editUser);
+    yield takeEvery("DELETE_USER", deleteUser);
 }
 
 function* sendToApi({method, url, body, ...data}) {
@@ -49,5 +50,14 @@ function* editUser(a) {
         body: a.payload,
         fulfilled: "users/editUser/fulfilled",
         rejected: "users/editUser/rejected"
+    });
+}
+
+function* deleteUser(a) {
+    yield call(sendToApi, {
+        method: "delete",
+        url: `api/user/${a.payload}`,
+        fulfilled: "users/deleteUser/fulfilled",
+        rejected: "users/deleteUser/rejected"
     });
 }

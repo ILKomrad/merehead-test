@@ -1,20 +1,10 @@
-import { Form, Input, Button, useForm } from "antd";
+import { Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 
 export default function AddUserForm() {
     const dispatch = useDispatch();
     const [form] = Form.useForm();
-    const formItemLayout = {
-        labelCol: {
-            span: 4,
-            offset: 4,
-        },
-        wrapperCol: {
-            span: 14,
-            offset: 0,
-        },
-    };
-
+    
     const onFinish = values => {
         dispatch({type: "ADD_USER", payload: values});
     }
