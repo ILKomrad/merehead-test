@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## settings.json
+
+Server url - api address
+maxItemsOnPage - number of users per page
+
 ## Available Scripts
 
 In the project directory, you can run:

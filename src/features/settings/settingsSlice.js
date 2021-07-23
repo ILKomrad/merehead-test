@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     "serverUrl": "",
-    "maxItemsOnPage": 2
+    "maxItemsOnPage": 5
 };
 
 export const getServerUrl = state => state.settings.serverUrl;
@@ -16,7 +16,8 @@ const settingsSlice = createSlice({
         "settings/get/fulfilled": (state, action) => {
             state.serverUrl = action.payload.serverUrl;
             state.maxItemsOnPage = action.payload.maxItemsOnPage;
-        }
+        },
+        "settings/get/rejected": (state, action) => {}
     }
 });
 
