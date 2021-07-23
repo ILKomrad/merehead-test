@@ -40,7 +40,7 @@ export default function AddUserForm() {
                     message: 'Please input your name',
                 },
             ]}>
-                <Input placeholder="Input your name" />
+                <Input placeholder="Input your surname" />
             </Form.Item>
 
             <Form.Item
@@ -51,7 +51,7 @@ export default function AddUserForm() {
                     message: 'Please input your name',
                 },
             ]}>
-                <Input.TextArea />
+                <Input.TextArea placeholder="Input your desc" />
             </Form.Item>
 
             <Form.Item>

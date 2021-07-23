@@ -5,6 +5,7 @@ import ConnectionApi from '../../api/connectionApi';
 export default function* watchUsers() {
     yield takeEvery("FETCH_ALL_USERS", fetchAllUsers);
     yield takeEvery("ADD_USER", addUser);
+    yield takeEvery("EDIT_USER", editUser);
 }
 
 function* sendToApi({method, url, body, ...data}) {
@@ -38,5 +39,15 @@ function* addUser(a) {
         body: a.payload,
         fulfilled: "users/addUser/fulfilled",
         rejected: "users/addUser/rejected"
+    });
+}
+
+function* editUser(a) {
+    yield call(sendToApi, {
+        method: "put",
+        url: `api/user/${a.payload.id}`,
+        body: a.payload,
+        fulfilled: "users/editUser/fulfilled",
+        rejected: "users/editUser/rejected"
     });
 }

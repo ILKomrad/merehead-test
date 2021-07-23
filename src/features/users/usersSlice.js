@@ -19,7 +19,6 @@ const usersSlice = createSlice({
     reducers: {},
     extraReducers: {
         "users/fetchUsers/fulfilled": (state, action) => {
-            console.log( action )
             state.state = 'succeeded';
             state.error = null;
             usersAdapter.upsertMany(state, action.payload);
@@ -31,7 +30,17 @@ const usersSlice = createSlice({
         "users/addUser/fulfilled": (state, action) => {
             usersAdapter.addOne(state, action.payload);
         },
-        "users/addUser/rejected": (state, action) => {}
+        "users/addUser/rejected": (state, action) => {},
+        "users/editUser/fulfilled": (state, action) => {
+            const { id } = action.payload;
+            const user = state.entities[id];
+            
+            if (user) {
+                for (let i in action.payload) {
+                    user[i] = action.payload[i];
+                }
+            }
+        }
     }
 });
 

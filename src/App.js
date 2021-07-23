@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import UsersPage from './pages/UsersPage';
+import EditUserPage from './pages/EditUserPage';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -14,12 +15,15 @@ export default function App() {
     }, [dispatch]);
 
     if (serverUrl) {
+        dispatch({type: "FETCH_ALL_USERS"});
+        
         inner = (
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
                         <UsersPage />
                     </Route>
+                    <Route exact path="/editUser/:userId" component={EditUserPage} />
                     <Redirect to="/" />
                 </Switch>
             </BrowserRouter>

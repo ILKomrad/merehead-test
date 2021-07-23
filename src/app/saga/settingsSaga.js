@@ -10,7 +10,7 @@ function* getSettings() {
     try {
         const settings = yield call(ConnectionApi.send, {
             method: "get",
-            url: "./settings.json"
+            url: process.env.PUBLIC_URL + "/settings.json"
         });
         
         yield put({ type: "settings/get/fulfilled", payload: settings });

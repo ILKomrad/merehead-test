@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from "react"
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Divider } from 'antd';
+import { useMemo } from "react"
+import { useSelector } from "react-redux";
+import { Row, Col } from 'antd';
 
 import { selectUsersIds } from "./usersSlice";
 import { usePageNumber } from '../../common/hooks';
@@ -10,7 +10,6 @@ import User from './User';
 import "./UsersList.css";
 
 export default function UsersList() {
-    const dispatch = useDispatch();
     const max = useSelector(getMaxPage);
     const error = useSelector(state => state.users.error);
     const active = usePageNumber();
@@ -24,10 +23,6 @@ export default function UsersList() {
     );
     const countPages = Math.ceil(usersIds.length / max)
     let inner;
-
-    useEffect(() => {
-        dispatch({type: "FETCH_ALL_USERS"});
-    }, [dispatch]);
 
     if (error) {
         inner = <div>{error}</div>;
