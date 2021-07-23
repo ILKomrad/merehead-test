@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## settings.json
 
-Server url - api address
+Server url - api address<br />
 maxItemsOnPage - number of users per page
 
 ## Available Scripts
