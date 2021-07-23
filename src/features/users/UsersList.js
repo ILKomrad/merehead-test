@@ -1,16 +1,28 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import Row from "react-bootstrap/Row";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./UsersList.css";
+import { Row, Col, Divider } from 'antd';
 
 import { selectUsersIds } from "./usersSlice";
+import { usePageNumber } from '../../common/hooks';
+import Paginator from '../../common/components/Paginator';
+import { getMaxPage } from '../settings/settingsSlice';
 import User from './User';
+import "./UsersList.css";
 
 export default function UsersList() {
     const dispatch = useDispatch();
+    const max = useSelector(getMaxPage);
     const error = useSelector(state => state.users.error);
+    const active = usePageNumber();
     const usersIds = useSelector(selectUsersIds);
+    const selectedIds = useMemo(
+        () => {
+            const start = (active - 1) * max;
+            return usersIds.slice(start, start + max)
+        }, 
+        [active, usersIds, max]
+    );
+    const countPages = Math.ceil(usersIds.length / max)
     let inner;
 
     useEffect(() => {
@@ -20,14 +32,26 @@ export default function UsersList() {
     if (error) {
         inner = <div>{error}</div>;
     } else {
-        inner = usersIds.map(id => <User key={id} id={id} />);
+        inner = selectedIds.map(id => (
+            <Row key={id} justify="center" gutter={16}>
+                <Col xs={24} md={6} sm={8}>
+                    <User key={id} id={id} />
+                </Col>
+            </Row>
+        ));
     }
 
     return (
         <section>
-            <h3>users</h3>
-            <Row className="users-list">
+            <Row justify="center">
+                <h3>users</h3>
+            </Row>
+            <div className="users-list"></div>
+            <div className="usersList">
                 {inner}
+            </div>
+            <Row justify="center">
+                <Paginator countPages={countPages} />
             </Row>
         </section>
     )

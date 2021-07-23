@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 export default class ConnectionApi {
-    static options = {
-        headers: {"content-type": "application/json"}
-    }
+    static async send({method, url, data}) {
+        const conf = { method, url, headers: {"content-type": "application/json"} }
 
-    static async get(url) {
+        if (data) {
+            conf.data = data;
+        }
+
         try {
-            const res = await axios.get(url); 
+            const res = await axios(conf);
 
             if (res.statusText === "OK") {
                 return res.data;
@@ -21,9 +23,5 @@ export default class ConnectionApi {
 
             return Promise.reject("Connection error");
         }
-    }
-
-    static post(url, data) {
-        axios.post(url, data, ConnectionApi.options);
     }
 }

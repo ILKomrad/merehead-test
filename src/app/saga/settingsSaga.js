@@ -8,7 +8,11 @@ function* watchSettings() {
 
 function* getSettings() {
     try {
-        const settings = yield call(ConnectionApi.get, "./settings.json");
+        const settings = yield call(ConnectionApi.send, {
+            method: "get",
+            url: "./settings.json"
+        });
+        
         yield put({ type: "settings/get/fulfilled", payload: settings });
     } catch (err) {
         yield put({ type: "settings/get/rejected", payload: err });

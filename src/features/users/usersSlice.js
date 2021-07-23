@@ -26,6 +26,9 @@ const usersSlice = createSlice({
             state.state = "error";
             state.error = action.payload;
             console.log( state.error )
+        },
+        "users/addUser/fulfilled": (state, action) => {
+            console.log( action )
         }
     }
 });

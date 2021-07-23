@@ -1,15 +1,14 @@
 import { useTitle } from '../common/hooks';
-
 import UsersList from '../features/users/UsersList';
-import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import AddUserForm from '../features/users/AddUserForm';
 
 export default function UsersPage() {
     useTitle("Users");
 
-    return (<main>
-        <Container>
+    return (
+        <main>
+            <AddUserForm />
             <UsersList />
-        </Container>
-    </main>)
+        </main>
+    )
 }
