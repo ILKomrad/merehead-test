@@ -7,12 +7,17 @@ export default function UserForm({ title, onSubmit, initialValues }) {
         labelCol: { span: 24 }
     };
 
+    function onFinish(values) {
+        onSubmit(values);
+        form.resetFields();
+    }
+
     return (
         <Form 
             form={form} 
             {...layout} 
+            onFinish={onFinish}
             name="userForm" 
-            onFinish={onSubmit} 
             initialValues={initialValues}>
             <h3 className="form-title">{title}</h3>
             <Form.Item 

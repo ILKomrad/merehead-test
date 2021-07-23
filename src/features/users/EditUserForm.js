@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import UserForm from './UserForm';
 
 export default function EditUserForm(user) {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const onFinish = values => {
+        history.push("/")
         dispatch({type: "EDIT_USER", payload: {...values, ...{id: user.id}}});
     }
 
