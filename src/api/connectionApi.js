@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export default class ConnectionApi {
-    static async send({method, url, data}) {
+    static async send({method, url, body}) {
         const conf = { method, url, headers: {"content-type": "application/json"} }
 
-        if (data) {
-            conf.data = data;
+        if (body) {
+            conf.data = body;
         }
 
         try {

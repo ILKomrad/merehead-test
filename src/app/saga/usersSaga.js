@@ -32,5 +32,11 @@ function* fetchAllUsers() {
 }
 
 function* addUser(a) {
-    yield console.log("add use")
+    yield call(sendToApi, {
+        method: "post",
+        url: "api/users",
+        body: a.payload,
+        fulfilled: "users/addUser/fulfilled",
+        rejected: "users/addUser/rejected"
+    });
 }

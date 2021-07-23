@@ -22,8 +22,7 @@ export default function AddUserForm() {
     return (
         <Form form={form} name="userForm" onFinish={onFinish}>
             <Form.Item 
-                label="Username" 
-                name="userName" 
+                name="name" 
                 rules={[
                 {
                     required: true,
@@ -34,8 +33,7 @@ export default function AddUserForm() {
             </Form.Item>
 
             <Form.Item 
-                label="user email" 
-                name="userEmail" 
+                name="surname" 
                 rules={[
                 {
                     required: true,
@@ -43,6 +41,17 @@ export default function AddUserForm() {
                 },
             ]}>
                 <Input placeholder="Input your name" />
+            </Form.Item>
+
+            <Form.Item
+                name="desc" 
+                rules={[
+                {
+                    required: true,
+                    message: 'Please input your name',
+                },
+            ]}>
+                <Input.TextArea />
             </Form.Item>
 
             <Form.Item>

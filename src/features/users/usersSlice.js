@@ -1,6 +1,8 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
-const usersAdapter = createEntityAdapter();
+const usersAdapter = createEntityAdapter({
+    sortComparer: (a, b) => b.id - a.id
+});
 const initialState = usersAdapter.getInitialState({
     error: null,
     state: "idle"
@@ -25,11 +27,11 @@ const usersSlice = createSlice({
         "users/fetchUsers/rejected": (state, action) => {
             state.state = "error";
             state.error = action.payload;
-            console.log( state.error )
         },
         "users/addUser/fulfilled": (state, action) => {
-            console.log( action )
-        }
+            usersAdapter.addOne(state, action.payload);
+        },
+        "users/addUser/rejected": (state, action) => {}
     }
 });
 
