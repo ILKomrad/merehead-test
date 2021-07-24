@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import UsersPage from './pages/UsersPage';
 import EditUserPage from './pages/EditUserPage';
@@ -19,7 +19,7 @@ export default function App() {
         dispatch({type: "FETCH_ALL_USERS"});
         
         inner = (
-            <BrowserRouter>
+            <HashRouter>
                 <Switch>
                     <Route exact path="/">
                         <UsersPage />
@@ -27,7 +27,7 @@ export default function App() {
                     <Route exact path="/editUser/:userId" component={EditUserPage} />
                     <Redirect to="/" />
                 </Switch>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
     return inner;
