@@ -1,6 +1,6 @@
 import { Form, Input, Button } from "antd";
 
-export default function UserForm({ title, onSubmit, initialValues }) {
+export default function UserForm({ title, btnTitle, onSubmit, initialValues }) {
     const [form] = Form.useForm();
 
     const layout = {
@@ -51,7 +51,7 @@ export default function UserForm({ title, onSubmit, initialValues }) {
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit">Submit</Button>
+                <Button type="primary" htmlType="submit">{btnTitle || "Submit"}</Button>
             </Form.Item>
         </Form>
     )

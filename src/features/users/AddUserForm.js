@@ -9,6 +9,10 @@ export default function AddUserForm() {
     }
     
     return (
-        <UserForm title="Add user" onSubmit={onFinish} />
+        <UserForm 
+            btnTitle="Add"
+            title="Add user" 
+            onSubmit={onFinish} 
+        />
     )
 }

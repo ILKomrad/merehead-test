@@ -17,29 +17,28 @@ export default function UsersList() {
     const selectedIds = useMemo(
         () => {
             const start = (active - 1) * max;
-            return usersIds.slice(start, start + max)
+            return usersIds.slice(start, start + max);
         }, 
         [active, usersIds, max]
     );
-    const countPages = Math.ceil(usersIds.length / max)
-    let inner;
+    const countPages = Math.ceil(usersIds.length / max);
+    let users;
 
     if (error) {
-        inner = <div>{error}</div>;
+        users = <div>{error}</div>;
     } else {
-        inner = selectedIds.map(id => (
+        users = selectedIds.map(id => (
             <User key={id} id={id} />
         ));
     }
 
     return (
-        <section className="usersList">
+        <section className="users">
             <Row justify="center">
-                <h3 className="usersList__title">users</h3>
+                <h3 className="title-md">users</h3>
             </Row>
-            <div className="users-list"></div>
             <div className="usersList">
-                {inner}
+                {users}
             </div>
             <Row justify="center">
                 <Paginator countPages={countPages} />

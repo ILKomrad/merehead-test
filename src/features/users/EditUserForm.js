@@ -18,7 +18,11 @@ export default function EditUserForm(user) {
     
     return (
         <Fragment>
-            <UserForm title="Edit user" initialValues={user} onSubmit={onFinish} />
+            <UserForm 
+                btnTitle="Save"
+                title="Edit user" 
+                initialValues={user} 
+                onSubmit={onFinish} />
             <Link to="/">Back</Link>
         </Fragment>
     )

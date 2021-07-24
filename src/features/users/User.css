@@ -8,6 +8,38 @@
     box-shadow: 0 0px .8rem rgba(0, 0, 0, .5);
 }
 
+.user {
+    display: flex;
+}
+
+.user__img {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.user__content {
+    padding: 0 1rem;
+}
+
+.user__desc {
+    font-size: 1rem;
+}
+
+.user__name {
+    font-size: 1.3rem;
+}
+
+.user__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.user__content > * {
+    width: 100%;
+}
+
 footer > button {
     margin: .2rem;
 }
@@ -19,4 +51,24 @@ button > span {
 footer {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+@media all and (max-width: 576px) {
+    .user__img {
+        max-width: 80%;
+    }
+
+    .user {
+        display: block;
+        text-align: center;
+    }
+
+    footer {
+        justify-content: center;
+    }
+
+    .user__content > * {
+        margin-top: .5rem;
+    }
 }

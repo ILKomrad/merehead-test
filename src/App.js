@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import UsersPage from './pages/UsersPage';
 import EditUserPage from './pages/EditUserPage';
+import "./App.css";
 
 export default function App() {
     const dispatch = useDispatch();

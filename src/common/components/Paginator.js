@@ -16,8 +16,12 @@ export default function Paginator({countPages}) {
     }
 
     return (
-        <div className="col-auto">
-            <Pagination current={active} onChange={onClick} total={countPages} pageSize={1} />
+        <div className="paginator col-auto">
+            <Pagination 
+                current={active} 
+                onChange={onClick} 
+                total={countPages} 
+                pageSize={1} />
         </div>
     )
 }

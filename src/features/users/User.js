@@ -18,14 +18,18 @@ export default function User({ id }) {
     }
 
     return (
-        <article className="users-list__item">
-            <h3>{user.name}</h3>
-            <p>{user.surname}</p>
-            <p>{user.desc}</p>
-            <footer>
-                <Button type="primary" onClick={onEdit}>edit</Button>
-                <Button danger type="primary" onClick={onDelete}>delete</Button>
-            </footer>
+        <article className="users-list__item user">
+            <img className="user__img" src={user.avatar || "./images/no-user-image.jpg"} />
+            <div className="user__content">
+                <div className="user__info">
+                    <h3 className="user__name">{user.surname} {user.name}</h3>
+                    <p className="user__desc">{user.desc}</p>
+                </div>
+                <footer>
+                    <Button type="primary" onClick={onEdit}>edit</Button>
+                    <Button danger type="primary" onClick={onDelete}>delete</Button>
+                </footer>
+            </div>
         </article>
     );
 }

@@ -2,7 +2,14 @@
     margin: .5rem;
 }
 
-.usersList__title {
-    text-transform: uppercase;
-    font-size: 2rem;
+.users-list__item:first-child {
+    margin-top: 0;
+}
+
+.users-list__item:last-child {
+    margin-bottom: 0;
+}
+
+.paginator {
+    margin-top: 1.5rem;
 }
